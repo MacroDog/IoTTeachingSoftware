@@ -31,11 +31,15 @@ public abstract class BaseUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        OnState();
     }
-
+   
     // Update is called once per frame
     void Update()
+    {
+        OnUpdate();
+    }
+    protected virtual void OnUpdate()
     {
 
     }

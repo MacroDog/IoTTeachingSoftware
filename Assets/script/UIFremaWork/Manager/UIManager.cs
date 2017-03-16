@@ -60,6 +60,14 @@ public class UIManager : Singleton<UIManager>
         }
         
     }
+    public void OpenUI(EnumUIPlaneType type)
+    {
+        OpenUI(type, false, null);
+    }
+    public void OpenUI(EnumUIPlaneType type,params object[] UIparams)
+    {
+        OpenUI(type, false, UIparams);
+    }
     public GameObject GetUIGameObject(EnumUIPlaneType type)
     {
         GameObject temp = null;
@@ -166,4 +174,7 @@ public class UIManager : Singleton<UIManager>
         dicOpenUI = new Dictionary<EnumUIPlaneType, GameObject>();
         stackOpneUI = new Stack<UIInfoData>();
     }
+
+
+
 }
