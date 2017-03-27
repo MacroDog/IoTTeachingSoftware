@@ -12,9 +12,10 @@ public  enum  SensorType
     RFIDRead,
     Flame,
     Smoke,
-    Inclination,
-    Thehumanbodyinfrare,
-    Ultrasonic
+    Tilt,
+    Infra_Red,
+    Ultrasonic,
+    Coil
 }
 
 
@@ -29,7 +30,7 @@ public class SensorPrefabPath
     {
         if (type!=SensorType.None)
         {
-            return SensorPfb_Path + type.ToString();
+            return SensorPfb_Path + type.ToString()+"Sensor";
         }
         return null;
         
@@ -53,9 +54,9 @@ public class SensorPrefabPath
                 break;
             case SensorType.Smoke:
                 break;
-            case SensorType.Inclination:
+            case SensorType.Tilt:
                 break;
-            case SensorType.Thehumanbodyinfrare:
+            case SensorType.Infra_Red:
                 break;
             case SensorType.Ultrasonic:
                 break;
@@ -63,6 +64,11 @@ public class SensorPrefabPath
                 break;
         }
         return temp;
+    }
+    public static GameObject getSensorPfb(SensorType type)
+    {
+        GameObject tem = Resources.Load(GetPath(type))as GameObject;
+        return tem;
     }
 }
 

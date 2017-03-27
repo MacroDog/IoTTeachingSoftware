@@ -73,7 +73,7 @@ public class UIManager : Singleton<UIManager>
         GameObject temp = null;
         if (!dicOpenUI.TryGetValue(type,out temp))
         {
-            throw new Exception("_dicOpen trygetvalue fail");
+           
         }
         return temp;
     }

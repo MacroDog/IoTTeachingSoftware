@@ -97,7 +97,7 @@ public abstract class BaseUI : MonoBehaviour
     }
     protected virtual void OnLoadData()
     {
-        Init();
+       
     }
     public void Release()
     {

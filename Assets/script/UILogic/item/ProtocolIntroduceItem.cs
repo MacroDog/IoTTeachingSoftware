@@ -6,10 +6,10 @@ using UnityEngine.UI;
 [RequireComponent(typeof(EventTrigger))]
 public class ProtocolIntroduceItem : MonoBehaviour {
     private EventTrigger eventTrigger;
-    public delegate void EventDelegate(UnityEngine.EventSystems.BaseEventData baseEvent);
+   // public delegate void EventDelegate(UnityEngine.EventSystems.BaseEventData baseEvent);
     public GameObject IntroduceObj;//用于介绍的说明
     private GameObject _IntroduceObj;
-  
+    public Vector2 point;
 
     void Start()
     {
@@ -41,8 +41,13 @@ public class ProtocolIntroduceItem : MonoBehaviour {
     {
 
        _IntroduceObj= MonoBehaviour.Instantiate(IntroduceObj, GameObject.FindObjectOfType<Canvas>().transform) as GameObject ;
-        _IntroduceObj.transform.position = Input.mousePosition;
-        Debug.Log("show");
+        RectTransform rectt= _IntroduceObj.GetComponent<RectTransform>();
+         rectt.parent = this.transform.parent;
+        rectt.pivot = point;
+       // rectt.anchorMin = rectt.anchorMax;
+       
+        rectt.transform.position = Input.mousePosition;
+        rectt.localScale= new Vector3(1, 1, 1);
     }
     private void CloseIntroduce(UnityEngine.EventSystems.BaseEventData baseEvent)
     {

@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 public class MainInterface : BaseUI
 {
-    private Button OpenChosePanel;
-    public EnumUIPlaneType childPanel=EnumUIPlaneType.MainInterface;//子界面 只允许打开一个子界面
+    [SerializeField]
+    private Button[] chooseButton;//开启子界面的按钮
+    private Button selectedButton;//当前打开界面的按钮
+    private EnumUIPlaneType childPanel=EnumUIPlaneType.MainInterface;//子界面 只允许打开一个子界面
     //private Dictionary<string, GameObject> dicChildPanel;//用来管理子界面
     public override EnumUIPlaneType GetUIType()
     {
@@ -19,59 +21,16 @@ public class MainInterface : BaseUI
         OpenModuleCognitionPenal();
 
     }
-    //protected override void OnState()
-    // {
-    //     base.OnState();
-    //     dicChildPanel = new Dictionary<string, GameObject>();
-    //     for (int i = 0; i < childPanel.Length; i++)
-    //     {
-    //         dicChildPanel.Add(childPanel[i].name, childPanel[i].gameObject);
-    //         childPanel[i].gameObject.SetActive(false);
-    //     }
-    //     childPanel[0].gameObject.SetActive(true);
-    // }
+    protected override void Init()
+    {
+        base.Init();
+    }
 
-
-    ///// <summary>
-    ///// 打开子界面并关闭其它子面板
-    ///// </summary>
-    ///// <param name="str"></param>
-    //public void OpenChildPanel_CloseOther(string str)
-    //{
-    //    List<string> keys = new List<string>(dicChildPanel.Keys);
-    //    for (int i = 0; i < keys.Count; i++)
-    //    {
-    //        GameObject temp = null;
-    //        if (keys[i]!=str)
-    //        {
-    //            if (dicChildPanel.TryGetValue(keys[i], out temp))
-    //            {
-    //                temp.SetActive(false);
-    //            }
-    //        }
-    //        else
-    //        {
-    //            dicChildPanel.TryGetValue(keys[i],out temp);
-    //            temp.SetActive(true);
-    //        }    
-    //    }
-    //}
-
-    ///// <summary>
-    ///// 设置分辨率
-    ///// </summary>
-    //public void SetResolution()
-    //{
-
-    //}
-    /// <summary>
-    /// 退出登录
-    /// </summary>
     public void QuitLogin()
     {
         SceneManager.LoadScene("Login");
     }
-
+    
     /// <summary>
     /// 进入主场景
     /// </summary>

@@ -49,20 +49,26 @@ public class FPSPlayerControl : MonoBehaviour
         }
 
         // m_MoveDir =new Vector3 (0, m_MoveDir.y,0);
-        float _yRot = Input.GetAxis("Mouse X") * m_RotatityMultiplier;
-        view_RotationDir.x = -Input.GetAxis("Mouse Y") * view_RotatityMulitiplier;
-        m_RotationDir.y = _yRot;
+        
+            view_RotationDir.x = -Input.GetAxis("Mouse Y") * view_RotatityMulitiplier;
+            m_RotationDir.y = Input.GetAxis("Mouse X") * m_RotatityMultiplier;
+       
+       
 
     }
     void FixedUpdate()
     {
-        transform.localRotation *= Quaternion.Euler(m_RotationDir);
-       // Quaternion s = view.transform.localRotation;
+        
+        // Quaternion s = view.transform.localRotation;
         //s *= Quaternion.Euler(view_RotationDir);
-       // Debug.Log(s.x);
+        // Debug.Log(s.x);
         //if (s.x> PitchAngleRange.x&&s.x<PitchAngleRange.y)
         //{
-        view.transform.localRotation *= Quaternion.Euler(view_RotationDir);
+        if (Input.GetMouseButton(1))
+        {
+            transform.localRotation *= Quaternion.Euler(m_RotationDir);
+            view.transform.localRotation *= Quaternion.Euler(view_RotationDir);
+        }
        // }
         
         m_CharacterController.Move(m_MoveDir);

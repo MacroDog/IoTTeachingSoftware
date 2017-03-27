@@ -4,10 +4,8 @@ using HighlightingSystem;
 using UnityEngine.UI;
 public class gameTest : FunctionObject
 {
-
-   
-
-
-
-
+    private void Update()
+    {
+        //Debug.Log(Input.mousePosition);
+    }
 }
